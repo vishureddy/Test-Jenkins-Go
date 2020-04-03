@@ -8,7 +8,7 @@ pipeline{
         stages{
                 stage('build Docker Image'){
                         steps{
-                                sh "docker build -t localhost:5000/nodeapp:${DOCKER_TAG}"
+                                sh "docker build -t localhost:5000/nodeapp:${DOCKER_TAG} ."
                         }
                 }
         }
