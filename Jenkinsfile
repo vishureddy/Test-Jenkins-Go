@@ -1,37 +1,21 @@
-pipeline {
-    agent none
-    stages {
-	
-	stage('Non-Parallel Stage') {
-	    agent {
-                        label "master"
-                }
-        steps {
-                echo 'This stage will be executed first'
-                }
+pipeline{
+        agent any
+        environment{
+        DOCKER_TAG=getDockerTag()
         }
 
-	
-        stage('Run Tests') {
-            parallel {
-                stage('Test On Windows') {
-                    agent {
-                        label "Windows_Node"
-                    }
-                    steps {
-                        echo "Task1 on Agent"
-                    }
-                    
+
+        stages{
+                stage('build Docker Image'){
+                        steps{
+                                sh "docker build -t localhost:5000/nodeapp:${DOCKER_TAG}"
+                        }
                 }
-                stage('Test On Master') {
-                    agent {
-                        label "master"
-                    }
-                    steps {
-						echo "Task1 on Master"
-					}
-                }
-            }
         }
-    }
 }
+
+def getDockerTag(){
+        def tag = sh script: "git rev-parse HEAD", returnStdout:true
+        return tag
+}
+
