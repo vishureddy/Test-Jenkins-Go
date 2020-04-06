@@ -11,6 +11,7 @@ pipeline{
                                 sh "whoami" 
                                 sh "sudo docker build . -t ${IMAGE_URL_WITH_TAG}"
                                 sh "sudo docker push ${IMAGE_URL_WITH_TAG}"
+                                sh "curl -X GET http://localhost:5000/v2/_catalog"
                         }
 
                 }
