@@ -8,6 +8,7 @@ pipeline{
         stages{
                 stage('Buid Docker Image'){
                         steps{
+                                sh "whoami" 
                                 sh "sudo docker build . -t ${IMAGE_URL_WITH_TAG}"
                         }
 
