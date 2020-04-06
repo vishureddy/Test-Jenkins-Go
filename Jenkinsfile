@@ -2,7 +2,7 @@ pipeline{
         agent any
         environment{
                 DOCKER_TAG = getDockerTag()
-                DOCKER_REGISTRY_URL  = "127.0.0.0:5000"
+                DOCKER_REGISTRY_URL  = "localhost:5000"
                 IMAGE_URL_WITH_TAG = "${DOCKER_REGISTRY_URL}/node-app:${DOCKER_TAG}"
         }
         stages{
