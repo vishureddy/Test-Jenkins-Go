@@ -8,7 +8,7 @@ pipeline{
         stages{
                 stage('Buid Docker Image'){
                         steps{
-                                sh "docker build . -t ${IMAGE_URL_WITH_TAG}"
+                                sh "sudo docker build . -t ${IMAGE_URL_WITH_TAG}"
                         }
 
                 }
