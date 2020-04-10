@@ -1,7 +1,7 @@
 # Start from the latest golang base image
 FROM golang:latest
 # Add Maintainer Info
-LABEL maintainer="Visweswara Redd G"
+LABEL maintainer="Visweswara Reddy G"
 # Set the Current Working Directory inside the container
 WORKDIR /app
 # Copy go mod and sum files

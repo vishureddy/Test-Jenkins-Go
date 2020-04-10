@@ -3,7 +3,7 @@ pipeline{
         environment{
                 DOCKER_TAG = getDockerTag()
                 DOCKER_REGISTRY_URL  = "localhost:5000"
-                IMAGE_URL_WITH_TAG = "${DOCKER_REGISTRY_URL}/node-app:${DOCKER_TAG}"
+                IMAGE_URL_WITH_TAG = "${DOCKER_REGISTRY_URL}/go-app:${DOCKER_TAG}"
         }
         stages{
                 stage('Buid Docker Image'){
