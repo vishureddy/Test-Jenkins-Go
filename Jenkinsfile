@@ -22,6 +22,13 @@ pipeline{
                                 sh "curl -X GET http://localhost:5000/v2/_catalog"
                         }
                 }
+                stage("Deploy to k8's"){
+                        steps{
+                                sh "chmod +x changeTag.sh"
+                                sh "./changeTag.sh ${DOCKER_TAG}"
+                        }
+
+                }
         }
 }
 
