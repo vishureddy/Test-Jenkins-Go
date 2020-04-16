@@ -6,19 +6,7 @@ metadata:
     app: goapp
 spec:
   containers:
-    - name: nodeapp
+    - name: goapp
       image: localhost:5000/go-app:tagVersion
       ports:
         - containerPort: 8080
-kind: Service
-apiVersion: v1
-metadata:
-  name: goapp
-spec:
-  selector:
-    app: goapp
-  ports:
-  - protocol: TCP
-    port: 80
-    targetPort: 8080
-  type: LoadBalancer
