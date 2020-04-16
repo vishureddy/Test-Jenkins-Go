@@ -26,6 +26,14 @@ pipeline{
                         steps{
                                 sh "chmod +x changeTag.sh"
                                 sh "./changeTag.sh ${DOCKER_TAG}"
+                                sh "scp -o StrictHostKeyChecking=no services.yaml node-app-pod.yaml visweswara@:192.168.43.173/home/visweswara/jjj/"
+                                script{
+	                         try{
+                                        sh "ssh visweswara@192.168.43.173 kubectl apply -f ."
+                                }catch(error){
+                                        sh "ssh visweswara@192.168.43.173 kubectl create -f ."
+
+                                  }
                         }
 
                 }
